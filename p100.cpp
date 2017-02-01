@@ -1,48 +1,35 @@
-#include<cstdio>
-#include<iostream>
-#include<vector>
-#include<set>
-#include<map>
+#include <iostream>
 #include<algorithm>
-#include<cstring>
 using namespace std;
-
-#define REP(I, N) for(int I = 0; I < (N); I++)
-#define FOR(I, A, B) for(int I = (A); I <= (B); I++)
-#define FORD(I, A, B) for(int I = (A); I >= (B); I--)
-#define ll long long
-#define F first
-#define S second
-#define MP make_pair
-#define PB push_back
-
-int tab[9000006];
-
-
-int calc(int u)
-{  
-    int i = 1;
-    while(u != 1)
-    {
-        if(u%2 == 0)
-            u /= 2;
-        else
-            u = 3*u+1;
-        i++;
-    }
-    return i;
-}
-
-int main()
+int main ()
 {
-    while(true)
-    {
-        int maks = -1, a, b;
-        scanf("%d %d", &a, &b);
-        FOR(i, a, b)
-            maks = max(maks, calc(i));
-        printf("%d %d %d\n", a, b, maks);
-    }
-    
-    return 0;
+        int n , i , j;
+        while(cin>>i>>j)
+        {
+                int tempi = i;
+                int tempj = j;
+                if(i>j)
+                        swap(i,j);
+               
+                int maxCycle_Length = -1;
+                int cycle_Length;
+                while(i<=j)
+                {
+                        n=i;
+                        cycle_Length = 1;
+                        while(n!=1){
+                                if(n%2!=0)
+                                        n=(3*n)+1;
+                                else
+                                        n = n/2;
+                                cycle_Length++;
+                        }
+                        if(cycle_Length > maxCycle_Length)
+                                maxCycle_Length = cycle_Length;
+                        i++;
+                }
+                cout<<tempi<<" "<<tempj<<" "<<maxCycle_Length<<endl;
+        }
+       
+        return 0;
 }
