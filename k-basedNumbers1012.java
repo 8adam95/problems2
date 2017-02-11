@@ -1,0 +1,26 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class kbasedNumbers1012
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+    
+        BigInteger a, b, c;
+        a = 1;
+        b = k-1;
+        
+        for(int i = 2; i <= n; i++)
+        {
+            c = (k-1)*(a+b);
+            a = b;
+            b = c;
+        }
+        
+        
+        System.out.println(b);
+    }
+}
